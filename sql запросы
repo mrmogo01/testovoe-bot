@@ -1,0 +1,16 @@
+# первый запрос
+SELECT e.first_name, e.last_name
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+WHERE d.department_name = 'IT';
+
+# второй запрос
+SELECT d.department_name, AVG(e.salary) AS average_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+GROUP BY d.department_name;
+
+# третий запрос
+SELECT e.employee_id, e.first_name, e.last_name, e.salary
+FROM employees e
+WHERE e.salary > (SELECT AVG(salary) FROM employees);
